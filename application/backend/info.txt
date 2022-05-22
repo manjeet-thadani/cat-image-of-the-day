@@ -1,0 +1,13 @@
+
+// mongo admin -u demo -p 'demo'
+// use demo
+// db.createCollection('images');
+
+// //  TODO: update these images
+// db.images.insertMany([
+//     { image: "https://i.picsum.photos/id/1060/200/300.jpg?hmac=xYtFmeYcfydIF3-Qybnra-tMwklX69T52EtGd-bacBI" },
+//     { image: "https://i.picsum.photos/id/504/200/300.jpg?hmac=mycti8qYrnGcag5zUhsVOq7hQwb__R-Zf--aBJAH_ec" },
+//     { image: "https://i.picsum.photos/id/891/200/300.jpg?hmac=lIgvXCbqdV9jucIDyPg0xpJl0QcTJTVuI9oo25NZqBM" },
+//     { image: "https://i.picsum.photos/id/295/200/300.jpg?hmac=b6Ets6Bu47pFHcU4UK7lI6xYkfy48orifVzWeHAe0zM" },
+//     { image: "https://i.picsum.photos/id/313/200/300.jpg?hmac=7_pHHv7TyDti50LaIVPvCPkdWDgM0tcX3ViCIWruEDQ" }    
+// ])
