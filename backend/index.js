@@ -1,6 +1,7 @@
 // import packages
 const express = require("express");
 const redis = require("redis");
+const cors = require('cors')
 const { MongoClient } = require('mongodb');
 
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,7 @@ const db = client.db(dbName);
 const collection = db.collection('images');
 
 const app = express();
+app.use(cors());
 
 // cache middleware
 async function cache(req, res, next) {
