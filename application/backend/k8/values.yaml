@@ -1,0 +1,13 @@
+name: demo-backend
+namespace: "test"
+image: "manjeetthadani27/demo-backend:latest"
+port: 3000
+
+config: 
+  MONGO_DB_NAME: "demo"
+  NODE_ENV: "production"
+
+secret:
+  # TODO: update these
+  MONGO_URL: ""
+  REDIS_URL: ""
