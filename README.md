@@ -1,8 +1,10 @@
 # Image of the Hour - Cat Version
 
 ## Introduction
-TODO: basic introduction
-
+This repository contains a website that shows an image of the cat of the hour.
+1. Web application based on Angular. It should show a cat of the hour by calling an API
+2. A simple Node.js application that serves the image of the day.
+3. Write a simple Node.js API that sends the image of the hour. It should be read from a MongoDB database and cached in a Redis cache for 1hour.
 
 ## Running Demo
 
@@ -11,18 +13,20 @@ TODO: basic introduction
 
 ## Architecture
 
-TODO: add architecture diagram
+High Level Architecture Diagram
+
+<p align="center"><img src="https://i.ibb.co/dP98T2q/hld.jpg" width="800"></p>
 
 ## Local Setup & Testing
 
-Refer to this README.md for details related to codebase and local setup
+Refer to this [README.md](application/README.md) for details related to the codebase and local setup
 
 ## Deployment 
 
 ### Prerequisite
-- AWS Account
-- Access/Secret keys are generated and configured
-- Required CLI Tools: Terraform, Kubectl, Helm
+- [AWS Account](https://aws.amazon.com/resources/create-account/)
+- Access/Secret keys are generated and configured (Ref: [link](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html))
+- Required CLI Tools: [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli), [Kubectl](https://kubernetes.io/docs/tasks/tools/), [Helm](https://helm.sh/docs/intro/install/)
 
 
 ### Step 1: Setup S3 bucket to store terraform state
@@ -40,12 +44,11 @@ $ terraform apply
 ### Step 2: Setup cloud services
 
 We would setup following cloud services:
-- `S3 Buckets`: 2 s3 buckets would be created to host website and assets (cat images) respectively
-- `Cloudfront`: 2 cloudfront distributions would be created to serve content from both S3 buckets
+- `S3 Buckets`: 2 s3 buckets would be created to host the website and assets (cat images) respectively
+- `Cloudfront`: 2 CloudFront distributions would be created to serve content from both S3 buckets
 - `VPC`: VPC in which EKS & Redis would be created
-- `EKS`: kubernetes cluster to deploy backend application and other services
-- `Redis`: setup AWS ElastiCache for Redis - would be used by backend application
-
+- `EKS`: Kubernetes cluster to deploy backend application and other services
+- `Redis`: setup AWS ElastiCache for Redis - would be used by the backend application
 
 1. Update bucket name in `terraform/02-project-setup/envs/backend.conf` with the bucket created in `Step 1`
 2. Update `terraform/02-project-setup/envs/terraform.tfvars`
@@ -69,7 +72,7 @@ Example: https://d3gpownff003dw.cloudfront.net/06.jpg
 
 #### Deploy MongoDB (optional):
 
-We can deploy HA MongoDB in k8 cluster or can use MongoDB Atlas to provide Mongodb instance. The following guide assumes that Mongodb would be installed in kubernetes cluster.
+We can deploy HA MongoDB in the k8 cluster or can use MongoDB Atlas to provide MongoDB instances. The following guide assumes that Mongodb would be installed in Kubernetes cluster.
 
 [Refer: Deploy MongoDB in Cluster](https://www.mongodb.com/docs/kubernetes-operator/master/tutorial/deploy-replica-set/)
 
@@ -199,7 +202,7 @@ NOTE: Assuming the docker images would be uploaded to dockerhub
 
 #### Frontend CI
 
-- Create a IAM user with access to website S3 bucket & Cloudfront distribution. Sample Policy:
+- Create an IAM user with access to website S3 bucket & Cloudfront distribution. Sample Policy:
 ```json
 {
     "Version": "2012-10-17",
@@ -260,5 +263,6 @@ CF_ID: Website Cloudfront distribution Id
 - Add CD in Backend Github Action
 - Add docker image tagging/versioning in Backend CI
 - Setup multiple replicas of Backend application in different nodes/zones for HA
+- Add support for mTLS between frontend and backend
 - Support for Velero for continuous backups and DR
- 
+- Integrate WAF 
