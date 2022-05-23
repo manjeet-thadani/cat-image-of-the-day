@@ -7,9 +7,8 @@ This repository contains a website that shows an image of the cat of the hour.
 3. Write a simple Node.js API that sends the image of the hour. It should be read from a MongoDB database and cached in a Redis cache for 1hour.
 
 ## Running Demo
-
-- `Frontend`: http://a2e8d5688a0594658bfefb701419163f-239422344.us-west-2.elb.amazonaws.com/api/v1/hour-image
-- `Backend`: http://duvqje3e0hmt0.cloudfront.net/
+- `Frontend`: http://duvqje3e0hmt0.cloudfront.net/
+- `Backend`: http://a2e8d5688a0594658bfefb701419163f-239422344.us-west-2.elb.amazonaws.com/api/v1/hour-image
 
 ## Architecture
 
