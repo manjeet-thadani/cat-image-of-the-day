@@ -1,7 +1,10 @@
 name: demo-backend
 namespace: "test"
+argo_namespace: "test"
 image: "manjeetthadani27/demo-backend:latest"
 port: 3000
+
+repo_url: "https://github.com/manjeet-thadani/cat-image-of-the-day.git"
 
 config: 
   MONGO_DB_NAME: "demo"
