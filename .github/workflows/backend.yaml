@@ -1,0 +1,30 @@
+name: Backend - Build, Publish Docker Image
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - application/backend/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build, and Publish
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: docker login
+      env:
+        DOCKER_USER: ${{secrets.DOCKER_USER}}
+        DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD 
+    
+    - name: Build the Docker image
+      run: cd application/backend/ && docker build . --tag manjeetthadani27/demo-backend:latest
+      
+    - name: Docker Push
+      run: docker push manjeetthadani27/demo-backend:latest
+    
