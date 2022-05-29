@@ -16,6 +16,10 @@ High Level Architecture Diagram
 
 <p align="center"><img src="https://i.ibb.co/dP98T2q/hld.jpg" width="800"></p>
 
+**NOTE**
+- HPA is enabled on Backend Application
+- (optional) Multi-region EKS clusters could be used to support wide geographies
+ 
 ## Local Setup & Testing
 
 Refer to this [README.md](application/README.md) for details related to the codebase and local setup
