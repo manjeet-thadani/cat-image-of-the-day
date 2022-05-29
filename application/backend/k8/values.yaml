@@ -14,3 +14,8 @@ secret:
   # TODO: update these
   MONGO_URL: ""
   REDIS_URL: ""
+
+scaling:
+  min_replicas: 1
+  max_replicas: 10
+  cpu_utilization: 80
